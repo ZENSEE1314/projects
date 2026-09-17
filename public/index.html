@@ -164,7 +164,7 @@
   <div class="hero-inner">
     <div class="eyebrow">Builder · Batam × Singapore</div>
     <h1>I build <span class="accent">things</span><br>that ship.</h1>
-    <p class="tagline">A living index of what I'm working on — from live trading bots and full-stack platforms to games and new-category concepts like <span class="rotator" id="rot">COCOON</span>.</p>
+    <p class="tagline">A living index of what I'm working on — from live trading bots and full-stack platforms to games and new-category concepts like <span class="rotator" id="rot">chillX</span>.</p>
     <div class="hero-stats">
       <div><span class="n" id="s-count">0</span><span class="l">Projects</span></div>
       <div><span class="n" id="s-live">0</span><span class="l">Live</span></div>
@@ -192,7 +192,7 @@
 <script>
 const PROJECTS = [
   {
-    id:"cocoon", title:"COCOON", tagline:"Private cinema lounges, by the hour",
+    id:"cocoon", title:"chillX", tagline:"Private cinema lounges, by the hour",
     cat:"Concept", status:"concept", statusLabel:"Raising",
     blurb:"Batam's first premium private streaming lounge — open 24/7, with an optional watch-buddy companion.",
     body:[
@@ -385,7 +385,7 @@ document.getElementById("s-live").textContent = PROJECTS.filter(p=>p.status==="l
 document.getElementById("yr").textContent = new Date().getFullYear();
 
 // tagline rotator
-const rotWords=["COCOON","AI ETH Trade","Reborn Wave","Konnect"];let ri=0;
+const rotWords=["chillX","AI ETH Trade","Reborn Wave","Konnect"];let ri=0;
 const rotEl=document.getElementById("rot");
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
   setInterval(()=>{ri=(ri+1)%rotWords.length;rotEl.style.opacity=0;
