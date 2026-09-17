@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COCOON — brag</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      html, body {
+        margin: 0; padding: 0; width: 1920px; height: 1080px;
+        overflow: hidden; background-color: #0F0D0C;
+      }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden;
+        background-color: #0F0D0C; color: #F4ECDD;
+        font-family: Georgia, "Times New Roman", serif; }
+
+      .clip { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .center { display: flex; flex-direction: column; align-items: center;
+        justify-content: center; text-align: center; }
+
+      /* background atmosphere */
+      #glow { position: absolute; inset: 0;
+        background:
+          radial-gradient(1100px 720px at 50% 42%, rgba(232,163,61,.22), transparent 62%),
+          radial-gradient(900px 700px at 80% 90%, rgba(224,122,115,.10), transparent 60%); }
+      #vignette { position: absolute; inset: 0;
+        background: radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0,0,0,.72) 100%); }
+      #grain { position: absolute; inset: -20%; opacity: .07; mix-blend-mode: soft-light;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 180px 180px; }
+
+      /* type */
+      .serif { font-family: Georgia, "Times New Roman", serif; }
+      .mono { font-family: "Courier New", ui-monospace, monospace; }
+      .big { font-size: 108px; font-weight: 700; line-height: 1.02; letter-spacing: -1px;
+        max-width: 1500px; }
+      .med { font-size: 66px; font-weight: 700; letter-spacing: -.5px; }
+      .ital { font-style: italic; color: #E8A33D; }
+      .rose { color: #E07A73; }
+      .sub { font-size: 40px; color: #CBBBA4; margin-top: 22px; }
+      .kick { font-size: 24px; letter-spacing: .34em; text-transform: uppercase; color: #9A8974; }
+      .tiny { font-size: 22px; letter-spacing: .24em; text-transform: uppercase; color: #9A8974; margin-top: 26px; }
+
+      /* wordmark */
+      #wm { font-size: 168px; font-weight: 700; letter-spacing: 10px; color: #F4ECDD;
+        text-shadow: 0 0 60px rgba(232,163,61,.35); }
+      .marquee-dot { display:inline-block; width: 26px; height: 26px; border-radius: 50%;
+        background: #E8A33D; box-shadow: 0 0 34px 6px rgba(232,163,61,.7); vertical-align: middle;
+        margin: 0 4px 22px; }
+
+      /* chips */
+      .chiprow { display: flex; gap: 20px; margin-top: 40px; }
+      .chip { font-family: "Courier New", ui-monospace, monospace; font-size: 30px;
+        color: #F4ECDD; border: 1.5px solid #4a3a30; border-radius: 999px; padding: 16px 30px;
+        background: linear-gradient(180deg, rgba(40,30,25,.6), rgba(26,18,16,.6)); }
+      .chip b { color: #E8A33D; }
+
+      /* stat tiles */
+      .tilerow { display: flex; gap: 26px; margin-top: 20px; }
+      .tile { width: 380px; padding: 42px 30px; border-radius: 22px;
+        border: 1.5px solid #3A2E27; background: linear-gradient(180deg,#1F1815,#15100D); }
+      .tile .v { font-family: Georgia, serif; font-size: 96px; font-weight: 700; color: #E8A33D; line-height: 1; }
+      .tile .v small { font-size: 40px; color: #9A8974; }
+      .tile .l { font-family: "Courier New", ui-monospace, monospace; font-size: 22px;
+        color: #CBBBA4; margin-top: 18px; letter-spacing: .04em; }
+
+      .footline { font-family: "Courier New", ui-monospace, monospace; font-size: 28px;
+        color: #9A8974; letter-spacing: .12em; margin-top: 34px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="cocoon" data-width="1920" data-height="1080" data-start="0" data-duration="20.4">
+
+      <!-- background -->
+      <div id="bg" class="clip" data-start="0" data-duration="20.4" data-track-index="0">
+        <div id="glow"></div>
+        <div id="grain"></div>
+        <div id="vignette"></div>
+      </div>
+
+      <!-- SCENE 1 · hook -->
+      <div id="s1" class="clip center" data-start="0" data-duration="3.0" data-track-index="1">
+        <div class="big"><span id="s1a">Everyone streams at home.</span><br><span id="s1b" class="ital">Nobody made it a night out.</span></div>
+      </div>
+
+      <!-- SCENE 2 · reveal -->
+      <div id="s2" class="clip center" data-start="3.0" data-duration="4.0" data-track-index="1">
+        <div id="wm" class="serif"><span class="marquee-dot"></span>COCOON</div>
+        <div id="s2t" class="sub ital" style="font-size:52px">Private cinema lounges — Batam</div>
+        <div id="s2s" class="tiny">nonton bareng · senyaman rumah</div>
+      </div>
+
+      <!-- SCENE 3 · room -->
+      <div id="s3" class="clip center" data-start="7.0" data-duration="3.8" data-track-index="1">
+        <div class="kick" id="s3k">Step one</div>
+        <div class="med serif" id="s3h" style="margin-top:18px">Rent a room.</div>
+        <div class="chiprow">
+          <div class="chip c3"><b>Rp50k</b> / hr</div>
+          <div class="chip c3">OPEN <b>24/7</b></div>
+          <div class="chip c3"><b>40</b> rooms · 4 levels</div>
+        </div>
+      </div>
+
+      <!-- SCENE 4 · companion -->
+      <div id="s4" class="clip center" data-start="10.8" data-duration="3.8" data-track-index="1">
+        <div class="kick rose" id="s4k">The twist</div>
+        <div class="med serif rose" id="s4h" style="margin-top:18px">Rent a watch-buddy.</div>
+        <div class="sub" id="s4s">Rp500k / 4 hrs — someone to watch it with.</div>
+        <div class="tiny" id="s4t">vetted · platonic · safe</div>
+      </div>
+
+      <!-- SCENE 5 · numbers -->
+      <div id="s5" class="clip center" data-start="14.6" data-duration="3.2" data-track-index="1">
+        <div class="kick" id="s5k">The business</div>
+        <div class="tilerow">
+          <div class="tile t5"><div class="v">3</div><div class="l">revenue streams</div></div>
+          <div class="tile t5"><div class="v"><small>~S$</small>41k</div><div class="l">revenue / month</div></div>
+          <div class="tile t5"><div class="v">~14<small> mo</small></div><div class="l">payback</div></div>
+        </div>
+      </div>
+
+      <!-- SCENE 6 · outro -->
+      <div id="s6" class="clip center" data-start="17.8" data-duration="2.6" data-track-index="1">
+        <div id="wm2" class="serif" style="font-size:132px;letter-spacing:8px;color:#F4ECDD;text-shadow:0 0 60px rgba(232,163,61,.35)"><span class="marquee-dot" style="width:20px;height:20px;margin-bottom:16px"></span>COCOON</div>
+        <div class="sub ital" id="s6t" style="font-size:48px">Leave the house for it.</div>
+        <div class="footline" id="s6f">Raising S$200k · 40% · Batam 2026</div>
+      </div>
+
+      <!-- audio -->
+      <audio id="music" src="assets/music.mp3" data-start="0" data-duration="20.4" data-volume="0.38"></audio>
+      <audio id="sfxBell1" src="assets/sfx-bell.ogg" data-start="3.0" data-duration="2" data-volume="0.5"></audio>
+      <audio id="sfxClick" src="assets/sfx-click.ogg" data-start="7.35" data-duration="1" data-volume="0.5"></audio>
+      <audio id="sfxPop1" src="assets/sfx-pop.ogg" data-start="14.95" data-duration="1" data-volume="0.5"></audio>
+      <audio id="sfxPop2" src="assets/sfx-pop.ogg" data-start="15.25" data-duration="1" data-volume="0.5"></audio>
+      <audio id="sfxPop3" src="assets/sfx-pop.ogg" data-start="15.55" data-duration="1" data-volume="0.5"></audio>
+      <audio id="sfxBell2" src="assets/sfx-bell.ogg" data-start="17.85" data-duration="2" data-volume="0.55"></audio>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // ambient glow breathing (finite)
+        tl.fromTo("#glow", { scale: 1, opacity: .85 },
+          { scale: 1.08, opacity: 1, duration: 5, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+
+        // S1 hook
+        tl.fromTo("#s1a", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: .8, ease: "power3.out" }, 0.15);
+        tl.fromTo("#s1b", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: .8, ease: "power3.out" }, 1.15);
+        tl.to("#s1 .big", { opacity: 0, duration: .35, ease: "power2.in" }, 2.7);
+
+        // S2 reveal — ignite
+        tl.fromTo("#wm", { opacity: 0, scale: .84, filter: "blur(8px)" },
+          { opacity: 1, scale: 1, filter: "blur(0px)", duration: .9, ease: "power3.out" }, 3.05);
+        tl.fromTo(".marquee-dot", { opacity: 0 }, { opacity: 1, duration: .5, ease: "power2.out" }, 3.4);
+        tl.fromTo("#s2t", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .7, ease: "power3.out" }, 3.7);
+        tl.fromTo("#s2s", { opacity: 0 }, { opacity: 1, duration: .7, ease: "power2.out" }, 4.1);
+        tl.to("#s2 > *", { opacity: 0, duration: .35, ease: "power2.in" }, 6.7);
+
+        // S3 room
+        tl.fromTo("#s3k", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, 7.05);
+        tl.fromTo("#s3h", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .6, ease: "power3.out" }, 7.2);
+        tl.fromTo(".c3", { opacity: 0, y: 30, scale: .9 },
+          { opacity: 1, y: 0, scale: 1, duration: .5, ease: "back.out(1.6)", stagger: .12 }, 7.45);
+        tl.to("#s3 > *", { opacity: 0, duration: .32, ease: "power2.in" }, 10.5);
+
+        // S4 companion
+        tl.fromTo("#s4k", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, 10.85);
+        tl.fromTo("#s4h", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .6, ease: "power3.out" }, 11.0);
+        tl.fromTo("#s4s", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .6, ease: "power3.out" }, 11.4);
+        tl.fromTo("#s4t", { opacity: 0 }, { opacity: 1, duration: .6, ease: "power2.out" }, 11.8);
+        tl.to("#s4 > *", { opacity: 0, duration: .32, ease: "power2.in" }, 14.3);
+
+        // S5 numbers
+        tl.fromTo("#s5k", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, 14.65);
+        tl.fromTo(".t5", { opacity: 0, y: 40, scale: .88 },
+          { opacity: 1, y: 0, scale: 1, duration: .55, ease: "back.out(1.7)", stagger: .3 }, 14.9);
+        tl.to("#s5 > *", { opacity: 0, duration: .3, ease: "power2.in" }, 17.5);
+
+        // S6 outro
+        tl.fromTo("#wm2", { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .8, ease: "power3.out" }, 17.85);
+        tl.fromTo("#s6t", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: .7, ease: "power3.out" }, 18.25);
+        tl.fromTo("#s6f", { opacity: 0 }, { opacity: 1, duration: .7, ease: "power2.out" }, 18.7);
+
+        window.__timelines["cocoon"] = tl;
+      </script>
+    </div>
+  </body>
+</html>
