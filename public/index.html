@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZENSEE — Projects</title>
+<meta name="description" content="A living index of things I'm building — trading bots, games, platforms, and concepts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#07090D;
+    --ink-2:#0C0F15;
+    --surface:#11151D;
+    --surface-2:#161B25;
+    --line:#232A36;
+    --line-soft:#1A202B;
+    --white:#EEF2F6;
+    --dim:#9AA6B6;
+    --muted:#5F6B7C;
+    --teal:#35E0C8;
+    --violet:#9B8CFF;
+    --amber:#F5B14C;
+    --green:#4ED88A;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--white);
+    font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .serif{font-family:"Instrument Serif","Georgia",serif}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(24px,6vw,64px);overflow:hidden}
+  #stars{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+  .hero-glow{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(680px 420px at 78% 18%, rgba(53,224,200,.13), transparent 65%),
+      radial-gradient(620px 460px at 12% 88%, rgba(155,140,255,.12), transparent 65%);}
+  .hero-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
+    padding:clamp(18px,3vw,30px) clamp(24px,6vw,64px);z-index:3}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.02em;font-size:18px}
+  .logo .orb{width:12px;height:12px;border-radius:50%;
+    background:conic-gradient(from 0deg,var(--teal),var(--violet),var(--amber),var(--teal));
+    box-shadow:0 0 18px rgba(53,224,200,.6);animation:spin 8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-top .nlink{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--dim);letter-spacing:.08em}
+  .hero-top .nlink:hover{color:var(--teal)}
+
+  .hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--teal);display:flex;align-items:center;gap:12px;margin-bottom:26px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--teal);opacity:.7}
+  h1{font-weight:700;font-size:clamp(48px,11vw,132px);line-height:.92;letter-spacing:-.03em;margin:0;
+    text-wrap:balance}
+  h1 .accent{font-family:"Instrument Serif",serif;font-weight:400;font-style:italic;letter-spacing:-.01em;
+    background:linear-gradient(100deg,var(--teal),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tagline{margin-top:26px;max-width:56ch;color:var(--dim);font-size:clamp(16px,2.1vw,20px)}
+  .rotator{color:var(--white);border-bottom:1.5px solid var(--teal);padding-bottom:1px}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:40px}
+  .hero-stats div{display:flex;flex-direction:column}
+  .hero-stats .n{font-size:30px;font-weight:600;line-height:1}
+  .hero-stats .l{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-cue .bar{width:1px;height:34px;background:linear-gradient(var(--teal),transparent);animation:cue 1.8s ease-in-out infinite}
+  @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ---------- GRID ---------- */
+  .work{max-width:var(--maxw);margin:0 auto;padding:clamp(48px,7vw,96px) clamp(24px,6vw,64px)}
+  .work-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:34px}
+  .work-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:600;letter-spacing:-.01em;margin:0}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .filter{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;color:var(--dim);
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:999px;padding:7px 14px;cursor:pointer;
+    transition:all .18s ease}
+  .filter:hover{border-color:var(--line);color:var(--white)}
+  .filter.on{background:var(--teal);border-color:var(--teal);color:#04120F;font-weight:500}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+  .card{position:relative;background:linear-gradient(180deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line-soft);border-radius:18px;padding:24px;cursor:pointer;overflow:hidden;
+    transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;display:flex;flex-direction:column;min-height:230px}
+  .card::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;
+    background:radial-gradient(420px 200px at var(--mx,80%) -10%, rgba(53,224,200,.10), transparent 60%);opacity:0;transition:opacity .22s}
+  .card:hover{transform:translateY(-5px);border-color:var(--line);box-shadow:0 30px 60px -34px rgba(0,0,0,.9)}
+  .card:hover::after{opacity:1}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .chip{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--violet);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+  .status{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;display:flex;align-items:center;gap:7px;color:var(--dim)}
+  .status .dot{width:8px;height:8px;border-radius:50%}
+  .dot.live{background:var(--green);box-shadow:0 0 10px var(--green)}
+  .dot.dev{background:var(--amber);box-shadow:0 0 10px var(--amber)}
+  .dot.concept{background:var(--violet);box-shadow:0 0 10px var(--violet)}
+  .card h3{font-family:"Space Grotesk",sans-serif;font-size:25px;font-weight:600;letter-spacing:-.01em;margin:22px 0 6px}
+  .card .tl{color:var(--teal);font-size:14px;font-family:"JetBrains Mono",monospace;margin-bottom:12px}
+  .card p{color:var(--dim);font-size:14.5px;margin:0}
+  .card .go{margin-top:auto;padding-top:18px;font-family:"JetBrains Mono",monospace;font-size:12px;
+    letter-spacing:.06em;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .18s,gap .18s}
+  .card:hover .go{color:var(--teal);gap:14px}
+
+  footer{max-width:var(--maxw);margin:0 auto;padding:40px clamp(24px,6vw,64px) 64px;border-top:1px solid var(--line-soft);
+    color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer a:hover{color:var(--teal)}
+
+  /* ---------- DETAIL OVERLAY ---------- */
+  .detail{position:fixed;inset:0;z-index:60;background:var(--ink-2);overflow-y:auto;display:none}
+  .detail.open{display:block;animation:fade .28s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .d-bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;
+    padding:16px clamp(20px,5vw,48px);background:rgba(12,15,21,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+  .back{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--dim);cursor:pointer;display:flex;align-items:center;gap:9px;background:none;border:0}
+  .back:hover{color:var(--teal)}
+  .d-wrap{max-width:960px;margin:0 auto;padding:clamp(30px,6vw,64px) clamp(20px,5vw,48px)}
+  .d-wrap .chip{color:var(--violet)}
+  .d-wrap h2{font-size:clamp(34px,7vw,68px);font-weight:700;letter-spacing:-.025em;line-height:1;margin:20px 0 0;text-wrap:balance}
+  .d-wrap .d-tl{font-family:"Instrument Serif",serif;font-style:italic;font-size:clamp(20px,3vw,28px);color:var(--teal);margin-top:14px}
+  .d-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .d-body{color:var(--dim);font-size:17px;margin-top:30px;max-width:62ch}
+  .d-body p{margin:0 0 16px}
+  .tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+  .tech span{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--dim);background:var(--surface);
+    border:1px solid var(--line-soft);border-radius:8px;padding:6px 11px}
+  .d-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{font-family:"JetBrains Mono",monospace;font-size:13.5px;letter-spacing:.02em;padding:13px 22px;border-radius:11px;
+    border:1px solid var(--line);color:var(--white);transition:all .18s ease;cursor:pointer;display:inline-flex;align-items:center;gap:9px}
+  .btn:hover{border-color:var(--teal);color:var(--teal)}
+  .btn.primary{background:var(--teal);border-color:var(--teal);color:#04120F;font-weight:600}
+  .btn.primary:hover{background:#2bd0b8;color:#04120F}
+  .embed{margin-top:36px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;height:78vh}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .hero-stats{gap:14px 28px}
+    footer{flex-direction:column}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .card:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <canvas id="stars"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-top">
+    <div class="logo"><span class="orb"></span>ZENSEE</div>
+    <a class="nlink" href="https://github.com/ZENSEE1314" target="_blank" rel="noopener">GITHUB ↗</a>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow">Builder · Batam × Singapore</div>
+    <h1>I build <span class="accent">things</span><br>that ship.</h1>
+    <p class="tagline">A living index of what I'm working on — from live trading bots and full-stack platforms to games and new-category concepts like <span class="rotator" id="rot">COCOON</span>.</p>
+    <div class="hero-stats">
+      <div><span class="n" id="s-count">0</span><span class="l">Projects</span></div>
+      <div><span class="n" id="s-live">0</span><span class="l">Live</span></div>
+      <div><span class="n serif" style="font-style:italic">∞</span><span class="l">Shipping</span></div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#work"><span class="bar"></span>SCROLL</a>
+</section>
+
+<section class="work" id="work">
+  <div class="work-head">
+    <h2>Selected work</h2>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>
+  <span>© <span id="yr"></span> ZENSEE — built &amp; shipping.</span>
+  <span><a href="https://github.com/ZENSEE1314" target="_blank" rel="noopener">github.com/ZENSEE1314</a> · zensee1314@gmail.com</span>
+</footer>
+
+<div class="detail" id="detail" aria-hidden="true"></div>
+
+<script>
+const PROJECTS = [
+  {
+    id:"cocoon", title:"COCOON", tagline:"Private cinema lounges, by the hour",
+    cat:"Concept", status:"concept", statusLabel:"Raising",
+    blurb:"Batam's first premium private streaming lounge — open 24/7, with an optional watch-buddy companion.",
+    body:[
+      "A new leisure category for Batam: beautifully designed private rooms you rent by the hour to stream your favourite shows on a big screen — a warmer, always-open evolution of the PS5 rental rooms locals already love.",
+      "Two revenue streams per room: the room itself (priced at the market floor to drive volume) and an optional vetted companion who joins your session — strictly platonic “nobar” culture, done safely. Snacks & drinks add a third line.",
+      "This is a full investor deck: market insight, unit economics, 24/7 revenue model, pricing ladder + membership, trust & safety, and a structured raise."
+    ],
+    tech:["Investor deck","4 levels · 40 rooms","S$200k raise · 40%"],
+    embed:"/cocoon.html",
+    links:[{label:"Open the deck",href:"/cocoon.html",primary:true}]
+  },
+  {
+    id:"ai-eth-trade", title:"AI ETH Trade", tagline:"Smart-money-concept ETH futures bot",
+    cat:"Trading AI", status:"live", statusLabel:"Live · paper",
+    blurb:"An automated ETH futures strategy built on Smart Money Concepts, running live in paper mode on Railway.",
+    body:[
+      "A systematic ETH futures bot combining Smart Money Concept structure with breakout logic and an LLM advisor. Runs multi-timeframe (2h + 1h) with an hour-of-day whitelist.",
+      "Deployed live on Railway in paper-trading mode for forward-testing the edge before any capital goes at risk."
+    ],
+    tech:["TypeScript","Railway","LLM advisor","SMC / breakout"],
+    links:[
+      {label:"View live",href:"https://ai-eth-trade-production.up.railway.app",primary:true},
+      {label:"GitHub ↗",href:"https://github.com/ZENSEE1314/AI-ETH-trade"}
+    ]
+  },
+  {
+    id:"ai-pro-trade", title:"AI Pro Trade", tagline:"Bitunix futures research lab",
+    cat:"Trading AI", status:"live", statusLabel:"Live",
+    blurb:"A futures trading & backtesting lab for Bitunix, deployed to the cloud to bypass local exchange-API limits.",
+    body:[
+      "A research and execution lab for crypto futures on Bitunix — strategy backtesting, signal generation and live wiring.",
+      "Runs on Railway because local ISP restrictions block exchange APIs; the cloud deployment keeps data and execution flowing."
+    ],
+    tech:["Python / TS","Railway","Bitunix API","Backtesting"],
+    links:[]
+  },
+  {
+    id:"konnect", title:"Konnect", tagline:"Digital name cards + networking",
+    cat:"Platform", status:"dev", statusLabel:"In dev",
+    blurb:"A business-networking platform with digital name cards — share who you are in a tap.",
+    body:[
+      "A modern take on the business card: shareable digital profiles and a networking layer that makes connections stick.",
+      "Built on Next.js 16 + Prisma 6 with a Neon Postgres database, targeting a Railway deployment."
+    ],
+    tech:["Next.js 16","Prisma 6","Neon Postgres","Railway"],
+    links:[{label:"GitHub ↗",href:"https://github.com/ZENSEE1314/businesscard"}]
+  },
+  {
+    id:"rebornwave", title:"Reborn Wave", tagline:"Doloruu club + member platform",
+    cat:"Web / Brand", status:"live", statusLabel:"Live",
+    blurb:"A cinematic 5-floor club experience site and a members platform, live on the web.",
+    body:[
+      "Brand and web for Reborn Wave / Doloruu — a five-floor club concept with a cinematic hero built from AI-generated video, plus a member platform.",
+      "The public site and member platform are live on Railway at rebornwave.group."
+    ],
+    tech:["Web","Railway","HEVC→H.264 video","Member platform"],
+    links:[{label:"Visit site",href:"https://rebornwave.group",primary:true}]
+  },
+  {
+    id:"petquest", title:"PetQuest Rewards", tagline:"Full-stack pet rewards game",
+    cat:"Game", status:"dev", statusLabel:"In dev",
+    blurb:"A full-stack rewards game where caring for pets earns real progression.",
+    body:[
+      "A full-stack game blending pet-care loops with a rewards economy — collect, care, and level up.",
+      "Backed by Neon Postgres with a Node/Next stack."
+    ],
+    tech:["Full-stack","Neon Postgres","Rewards economy"],
+    links:[]
+  },
+  {
+    id:"monster-meadow", title:"Monster Meadow", tagline:"Pet-monster RPG",
+    cat:"Game", status:"dev", statusLabel:"In dev",
+    blurb:"A cozy monster-collecting RPG with AI-generated sprite art.",
+    body:[
+      "A browser RPG where you raise and battle meadow monsters, with a scripted AI sprite-generation pipeline for the creature art.",
+      "Design-forward and playful — a small game with a lot of character."
+    ],
+    tech:["Browser game","AI sprites","RPG systems"],
+    links:[]
+  },
+  {
+    id:"mvp-factory", title:"MVP Factory", tagline:"Automated MVP build & billing pipeline",
+    cat:"Automation", status:"dev", statusLabel:"In dev",
+    blurb:"An automated pipeline that sells, builds and bills MVPs end-to-end.",
+    body:[
+      "A machine for shipping MVPs: it handles the sales intake, the build orchestration and the billing in one automated pipeline.",
+      "The idea — turn a repeatable service into a productised, mostly-automated factory."
+    ],
+    tech:["Node","Automation","Billing","Orchestration"],
+    links:[]
+  },
+  {
+    id:"geocity", title:"GeoCity", tagline:"Real-world 3D city game",
+    cat:"Game", status:"dev", statusLabel:"In dev",
+    blurb:"A 3D game layered on real-world geography.",
+    body:[
+      "An experimental 3D game that maps play onto real-world locations — explore and build on top of the actual city.",
+      "Ambitious 3D/geospatial tech; in active development."
+    ],
+    tech:["3D / WebGL","Geospatial","Game engine"],
+    links:[]
+  }
+];
+
+const grid = document.getElementById("grid");
+const filtersEl = document.getElementById("filters");
+const detail = document.getElementById("detail");
+let active = "All";
+
+const cats = ["All", ...Array.from(new Set(PROJECTS.map(p => p.cat)))];
+
+function renderFilters(){
+  filtersEl.innerHTML = cats.map(c =>
+    `<button class="filter${c===active?' on':''}" data-c="${c}">${c}</button>`).join("");
+  filtersEl.querySelectorAll(".filter").forEach(b=>{
+    b.onclick=()=>{active=b.dataset.c;renderFilters();renderGrid();};
+  });
+}
+function renderGrid(){
+  const list = active==="All" ? PROJECTS : PROJECTS.filter(p=>p.cat===active);
+  grid.innerHTML = list.map(p=>`
+    <article class="card" data-id="${p.id}" tabindex="0" role="button" aria-label="${p.title}">
+      <div class="top">
+        <span class="chip">${p.cat}</span>
+        <span class="status"><span class="dot ${p.status}"></span>${p.statusLabel}</span>
+      </div>
+      <h3>${p.title}</h3>
+      <div class="tl">${p.tagline}</div>
+      <p>${p.blurb}</p>
+      <div class="go">EXPLORE <span aria-hidden="true">→</span></div>
+    </article>`).join("");
+  grid.querySelectorAll(".card").forEach(c=>{
+    const open=()=>{location.hash="#/p/"+c.dataset.id;};
+    c.addEventListener("click",open);
+    c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open();}});
+    c.addEventListener("mousemove",e=>{
+      const r=c.getBoundingClientRect();
+      c.style.setProperty("--mx",((e.clientX-r.left)/r.width*100)+"%");
+    });
+  });
+}
+
+function renderDetail(p){
+  const links = (p.links||[]).map(l=>{
+    const ext = /^https?:/.test(l.href);
+    return `<a class="btn ${l.primary?'primary':''}" href="${l.href}" ${ext?'target="_blank" rel="noopener"':''}>${l.label}</a>`;
+  }).join("");
+  const embed = p.embed ? `<div class="embed"><iframe src="${p.embed}" title="${p.title}" loading="lazy"></iframe></div>` : "";
+  detail.innerHTML = `
+    <div class="d-bar">
+      <button class="back" id="backBtn">← ALL PROJECTS</button>
+      <div class="logo" style="font-size:15px"><span class="orb"></span>ZENSEE</div>
+    </div>
+    <div class="d-wrap">
+      <span class="chip">${p.cat}</span>
+      <h2>${p.title}</h2>
+      <div class="d-tl">${p.tagline}</div>
+      <div class="d-meta"><span class="status"><span class="dot ${p.status}"></span>${p.statusLabel}</span></div>
+      <div class="d-body">${p.body.map(t=>`<p>${t}</p>`).join("")}</div>
+      <div class="tech">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div>
+      ${links?`<div class="d-links">${links}</div>`:""}
+      ${embed}
+    </div>`;
+  detail.classList.add("open");
+  detail.setAttribute("aria-hidden","false");
+  detail.scrollTop=0;
+  document.body.style.overflow="hidden";
+  document.getElementById("backBtn").onclick=()=>{location.hash="#/";};
+}
+function closeDetail(){
+  detail.classList.remove("open");
+  detail.setAttribute("aria-hidden","true");
+  detail.innerHTML="";
+  document.body.style.overflow="";
+}
+function route(){
+  const m = location.hash.match(/^#\/p\/(.+)$/);
+  if(m){
+    const p = PROJECTS.find(x=>x.id===m[1]);
+    if(p){renderDetail(p);return;}
+  }
+  closeDetail();
+}
+window.addEventListener("hashchange",route);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&detail.classList.contains("open"))location.hash="#/";});
+
+// counters
+document.getElementById("s-count").textContent = PROJECTS.length;
+document.getElementById("s-live").textContent = PROJECTS.filter(p=>p.status==="live").length;
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// tagline rotator
+const rotWords=["COCOON","AI ETH Trade","Reborn Wave","Konnect"];let ri=0;
+const rotEl=document.getElementById("rot");
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  setInterval(()=>{ri=(ri+1)%rotWords.length;rotEl.style.opacity=0;
+    setTimeout(()=>{rotEl.textContent=rotWords[ri];rotEl.style.opacity=1;},260);},2600);
+  rotEl.style.transition="opacity .26s ease";
+}
+
+renderFilters();renderGrid();route();
+
+// ---------- constellation canvas ----------
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv=document.getElementById("stars"),ctx=cv.getContext("2d");
+  let w,h,pts,raf;
+  const DPR=Math.min(window.devicePixelRatio||1,2);
+  function size(){
+    const hero=cv.parentElement.getBoundingClientRect();
+    w=hero.width;h=hero.height;cv.width=w*DPR;cv.height=h*DPR;cv.style.width=w+"px";cv.style.height=h+"px";
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    const n=Math.min(90,Math.floor(w*h/16000));
+    pts=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.4+.4}));
+  }
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<pts.length;i++){
+      const p=pts[i];p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle="rgba(53,224,200,.55)";ctx.fill();
+      for(let j=i+1;j<pts.length;j++){
+        const q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=dx*dx+dy*dy;
+        if(d<15000){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle="rgba(155,140,255,"+(.14*(1-d/15000))+")";ctx.lineWidth=1;ctx.stroke();}
+      }
+    }
+    raf=requestAnimationFrame(tick);
+  }
+  size();tick();
+  let t;window.addEventListener("resize",()=>{clearTimeout(t);t=setTimeout(()=>{cancelAnimationFrame(raf);size();tick();},180);});
+})();
+</script>
+</body>
+</html>

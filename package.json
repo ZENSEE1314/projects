@@ -1,0 +1,12 @@
+{
+  "name": "zensee-projects-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio hub for ZENSEE's projects",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
