@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ZENSEE — Projects</title>
-<meta name="description" content="A living index of things I'm building — trading bots, games, platforms, and concepts.">
+<title>Bridge X — Projects</title>
+<meta name="description" content="Bridge X — a living index of things I'm building: trading bots, games, platforms, and new-category concepts.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -49,11 +50,9 @@
       radial-gradient(620px 460px at 12% 88%, rgba(155,140,255,.12), transparent 65%);}
   .hero-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
     padding:clamp(18px,3vw,30px) clamp(24px,6vw,64px);z-index:3}
-  .logo{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.02em;font-size:18px}
-  .logo .orb{width:12px;height:12px;border-radius:50%;
-    background:conic-gradient(from 0deg,var(--teal),var(--violet),var(--amber),var(--teal));
-    box-shadow:0 0 18px rgba(53,224,200,.6);animation:spin 8s linear infinite}
-  @keyframes spin{to{transform:rotate(360deg)}}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.01em;font-size:18px}
+  .logo .mark{width:26px;height:26px;display:block;flex:none}
+  .logo .x{color:var(--teal);font-family:"Instrument Serif",serif;font-style:italic;font-weight:400}
   .hero-top .nlink{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--dim);letter-spacing:.08em}
   .hero-top .nlink:hover{color:var(--teal)}
 
@@ -159,7 +158,7 @@
   <canvas id="stars"></canvas>
   <div class="hero-glow"></div>
   <div class="hero-top">
-    <div class="logo"><span class="orb"></span>ZENSEE</div>
+    <div class="logo"><img class="mark" src="/favicon.svg" alt="Bridge X logo">Bridge&nbsp;<span class="x">X</span></div>
     <a class="nlink" href="https://github.com/ZENSEE1314" target="_blank" rel="noopener">GITHUB ↗</a>
   </div>
   <div class="hero-inner">
@@ -184,7 +183,7 @@
 </section>
 
 <footer>
-  <span>© <span id="yr"></span> ZENSEE — built &amp; shipping.</span>
+  <span>© <span id="yr"></span> Bridge X — built &amp; shipping.</span>
   <span><a href="https://github.com/ZENSEE1314" target="_blank" rel="noopener">github.com/ZENSEE1314</a> · zensee1314@gmail.com</span>
 </footer>
 
@@ -345,7 +344,7 @@ function renderDetail(p){
   detail.innerHTML = `
     <div class="d-bar">
       <button class="back" id="backBtn">← ALL PROJECTS</button>
-      <div class="logo" style="font-size:15px"><span class="orb"></span>ZENSEE</div>
+      <div class="logo" style="font-size:15px"><img class="mark" src="/favicon.svg" alt="Bridge X logo" style="width:22px;height:22px">Bridge&nbsp;<span class="x">X</span></div>
     </div>
     <div class="d-wrap">
       <span class="chip">${p.cat}</span>
